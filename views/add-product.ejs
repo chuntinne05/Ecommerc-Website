@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/shop.css">
+    <title>Thêm Sản Phẩm</title>
+</head>
+<body>
+    <form action="/add-product" method="POST">
+        <label for="name">Tên Sản Phẩm:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="price">Giá:</label>
+        <input type="text" id="price" name="price" required><br>
+
+        <label for="image">URL Hình Ảnh:</label>
+        <input type="text" id="image" name="image" required><br>
+
+        <label for="description">Mô Tả:</label>
+        <textarea id="description" name="description"></textarea><br>
+        <div>
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="">-- Chọn Category --</option>
+                <% categories.forEach(category => { %>
+                    <option value="<%= category.id %>"><%= category.name %></option>
+                <% }) %>
+            </select>
+        </div>
+        <button type="submit">Thêm Sản Phẩm</button>
+    </form>
+</body>
+</html>

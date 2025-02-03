@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/css/shop.css" />
+		<link rel="stylesheet" href="/css/nav_bar.css" />
+		<title>Shop</title>
+	</head>
+	<body>
+		<nav>
+			<a href="/home" class="logo" style="color: aliceblue">chuntinne</a>
+			<div class="links">
+				<a href="/shop">Shop</a>
+				<a href="/the-food">The Food</a>
+				<a href="/about-us">About Us</a>
+				<a href="/rewards">Rewards</a>
+			</div>
+			<div class="user-cart">
+				<div class="user-in4" style="font-size: 20px">
+					<a href="/login.html" class="circle">
+						<i class="bx bx-user"></i>
+					</a>
+				</div>
+				<% if (userId) { %>
+				<li>
+					<a href="/cart"><i class="bx bx-cart-alt"></i>Cart</a>
+				</li>
+				<li><a href="/logout">Đăng xuất</a></li>
+				<% } else { %>
+				<li><a href="/login.html">Đăng nhập</a></li>
+				<li><a href="/register.html">Đăng ký</a></li>
+				<% } %>
+			</div>
+		</nav>
+		<div class="header_shop">
+			<div class="shopFood">
+				<h1>Shop</h1>
+				<h2>FOOD+</h2>
+				<!-- <button class="filter_button">Filter</button> -->
+				<div class="category-button">
+					<label for="categoryFilter">Chọn Category:</label>
+					<select id="categoryFilter" onchange="filterCategory()">
+						<option value="">Tất cả</option>
+						<% categories.forEach(category => { %>
+							<option value="<%= category.id %>" <% if (selectedCategory == category.id) { %>selected<% } %>><%= category.name %></option>
+						<% }) %>
+					</select>
+				</div>
+			</div>
+			<div class="FreeShipping">
+				<h2>Get FREE shipping when shopping over 100k</h2>
+			</div>
+		</div>
+		<div class="product-grid">
+			<% products.forEach(product => { %>
+			<div class="product-card">
+				<img
+					src="<%= product.image %>"
+					alt="<%= product.name %>"
+					class="product-image"
+				/>
+				<h3 class="product-title"><%= product.name %></h3>
+				<p class="product-price"><%= product.price %></p>
+				<p>Category: <%= product.category_name %></p>
+				<button class="add-to-cart" data-id="<%= product.id %>">
+					Add to Cart
+				</button>
+			</div>
+			<% }) %>
+		</div>
+		<script src="/js/script.js"></script>
+		<script>
+			function filterCategory() {
+				const selectedCategory = document.getElementById('categoryFilter').value;
+				let url = '/shop';
+				if (selectedCategory) {
+					url += '?category=' + encodeURIComponent(selectedCategory);
+				}
+				window.location.href = url;
+			}
+		</script>
+	</body>
+</html>

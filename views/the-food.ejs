@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/css/style.css" />
+		<link rel="stylesheet" href="/css/nav_bar.css" />
+		<title>The food</title>
+	</head>
+
+	<body>
+		<div class="home_page" style="background-color: rgb(130, 29, 29)">
+			<nav>
+				<a href="/home" class="logo" style="color: aliceblue">chuntinne</a>
+				<div class="links">
+					<a href="/shop">Shop</a>
+					<a href="/the-food">The Food</a>
+					<a href="/about-us">About Us</a>
+					<a href="/rewards">Rewards</a>
+				</div>
+				<div class="user-cart">
+					<div class="user-in4" style="font-size: 20px">
+						<a href="/login.html" class="circle">
+							<i class="bx bx-user"></i>
+						</a>
+					</div>
+					<% if (userId) { %>
+						<li><a href="/cart"><i class="bx bx-cart-alt"></i>Cart</a></li>
+						<li><a href="/logout">Đăng xuất</a></li>
+					<% } else { %>
+						<li><a href="/login.html">Đăng nhập</a></li>
+						<li><a href="/register.html">Đăng ký</a></li>
+					<% } %>
+				</div>
+			</nav>
+		</div>
+		<footer>
+			<h3>O mai dam tieu doi 6</h3>
+			<div class="right">
+				<div class="links">
+					<a href="#">Privacy Policy</a>
+					<a href="#">Cooperation</a>
+					<a href="#">Sponsorship</a>
+					<a href="#">Contact Us</a>
+				</div>
+				<div class="social">
+					<i class="bx bxl-instagram"></i>
+					<i class="bx bxl-facebook-square"></i>
+					<i class="bx bxl-github"></i>
+				</div>
+				<p>Copyright © 2024 nhin cc, All Rights Reserved.</p>
+			</div>
+		</footer>
+		<script src="/js/script.js"></script>
+	</body>
+</html>

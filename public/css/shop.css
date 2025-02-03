@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,600&family=Phetsarath&family=Roboto&family=UnifrakturMaguntia&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* font-family: 'Courier Prime', sans-serif; */
+}
+
+/* @font-face {
+	font-family: "Courier Prime";
+	src: url();
+} */
+
+a {
+	text-decoration: none;
+	color: #433838;
+}
+
+img {
+	object-fit: cover;
+}
+
+body {
+	background-color: #e7cfcf;
+}
+
+ul.links {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 20px;
+}
+
+ul.links > li {
+	position: relative;
+}
+
+a.hover {
+	color: #de9191;
+}
+
+header {
+	padding: 0 80px;
+	height: calc(100vh - 80px);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.cart_button {
+	font-size: 20px;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+.header_shop {
+	margin-top: 5%;
+}
+
+.shopFood {
+	display: flex;
+	margin-left: 2%;
+}
+
+.shopFood h1 {
+	font-size: 3rem;	
+}
+
+.shopFood h2 {
+	font-size: 3rem;
+    margin-left: 20px;
+    font-family: 'Courier Prime', sans-serif;
+}
+
+.category-button {
+	margin-left: 60%;
+}
+.FreeShipping {
+	margin-top: 10px;
+	background: #f0eeee;
+	padding: 17px;
+	display: flex;
+	justify-content: center;
+}
+
+.FreeShipping h2 {
+	display: flex;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    gap: 2rem;
+	padding: 2rem 80px;
+}
+
+.product-card {
+    background: rgb(222, 199, 199);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    width: 100%;
+    height: 24rem;
+    border-radius: 4px;
+}
+
+.product-title {
+	display: flex;
+	justify-content: center;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.product-price {
+	display: flex;
+	justify-content: center;
+    font-weight: bold;
+    color: #433838;
+}
+
+.add-to-cart {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    background: #433838;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background: #5a4d4d;
+}
+
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/css/style.css" />
+		<link rel="stylesheet" href="/css/nav_bar.css" />
+		<title>Home page</title>
+	</head>
+
+	<body>
+		<div class="home_page" style="background-color: rgb(130, 29, 29)">
+			<nav>
+				<a href="/home" class="logo" style="color: aliceblue"><img src="/assets/Ảnh_màn_hình_2025-01-20_lúc_16.14.14-removebg-preview.png" alt=""></a>
+				<div class="links">
+					<a href="/shop">Shop</a>
+					<a href="/the-food">The Food</a>
+					<a href="/about-us">About Us</a>
+					<a href="/rewards">Rewards</a>
+				</div>
+				<div class="user-cart">
+					<div class="user-in4" style="font-size: 20px">
+						<a href="/login.html" class="circle">
+							<i class="bx bx-user"></i>
+						</a>
+					</div>
+					<% if (userId) { %>
+						<a href="/cart"><i class="bx bx-cart-alt"></i>Cart</a>
+						<a href="/logout">Đăng xuất</a>
+					<% } else { %>
+						<a href="/login.html">Đăng nhập</a>     
+						<a href="/register.html">Đăng ký</a>
+					<% } %>
+				</div>
+			</nav>
+			<div class="home_page_intro">
+				<h1>
+					<span>Ngon vcl</span>
+					<span>nha may</span>
+				</h1>
+				<h4>
+					<span>I don't know what to do here but</span>
+					<span>i will keep a Dog here to guard!</span>
+				</h4>
+				<a href="/shop" class="shop_now_button">Shop now</a>
+			</div>
+		</div>
+		<div class="separator">
+			<span class="large_text"
+				>Our store's products are produced and circulated in Thailand.</span
+			>
+			<span class="small_test">Best Seller↓</span>
+		</div>
+
+		<div class="nft-shop">
+			<div class="nft-list">
+				<% products.forEach(function(product) { %>
+				<div class="item">
+					<img src="<%= product.image_url %>" alt="<%= product.name %>" />
+					<div class="info">
+						<div>
+							<h5><%= product.name %></h5>
+						</div>
+						<!-- <p>5 of 33</p> -->
+					</div>
+					<div class="bid">
+						<p>
+							<%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency:
+							'VND' }).format(product.price) %>
+						</p>
+						<!-- <a href="#">Add to cart</a> -->
+						<button class="add-to-cart" data-id="<%= product.id %>">
+							Add to Cart
+						</button>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+
+		<div class="view-more">
+			<a href="/shop"><button>View More</button></a>
+		</div>
+
+		<div class="something_special">
+			<div class="intro_sth_special" style="color: rgb(185, 157, 157)">
+				<span class="large_text"
+					>Seeking something special? We've got a few notes.<strong
+						>Start your search with specific types of our products.</strong
+					></span
+				>
+				<span class="small_test">Narrow your options↓</span>
+			</div>
+
+			<div class="container">
+				<div class="row row-1">
+					<div class="col">
+						<div class="col-box"><a href="/shop?category=1">Snack</a></div>
+						<div class="col-box"><a href="/shop?category=2">Food</a></div>
+					</div>
+
+					<div class="col col-2">
+						<div class="col-box"><a href="/shop?category=3">Necessary</a></div>
+						<div class="col-box">THE BUILDING BLOCKS OF STORE</div>
+					</div>
+				</div>
+				<div class="row row-2">
+					<div class="box"><a href="/shop?category=4">Noodles</a></div>
+					<div class="box"><a href="/shop?category=5">Cake</a></div>
+					<div class="box"><a href="/shop?category=6">Oishi</a></div>
+				</div>
+				<div class="row row-3">
+					<div class="box"><a href="/shop?category=7">Drink</a></div>
+					<div class="box"><a href="/shop">BLEND</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="quotes">
+			<div class="quotes_intro" style="color: rgb(185, 157, 157)">
+				<span class="large_text"
+					>"Our products is qualified by the UNEFITY - The Universal Exchange
+					Fetch Inner Typical Year."
+				</span>
+			</div>
+			<div class="CEO_quotes">
+				<span class="CEO_name"> Mr. Trung Tin </span>
+				<span class="Detail CEO"> Co-Founder & CEO </span>
+			</div>
+		</div>
+		<footer>
+			<h3>O mai dam tieu doi 6</h3>
+			<div class="right">
+				<div class="links">
+					<a href="#">Privacy Policy</a>
+					<a href="#">Cooperation</a>
+					<a href="#">Sponsorship</a>
+					<a href="#">Contact Us</a>
+				</div>
+				<div class="social">
+					<i class="bx bxl-instagram"></i>
+					<i class="bx bxl-facebook-square"></i>
+					<i class="bx bxl-github"></i>
+				</div>
+				<p>Copyright © 2024 nhin cc, All Rights Reserved.</p>
+			</div>
+		</footer>
+		<script src="/js/script.js"></script>
+	</body>
+</html>

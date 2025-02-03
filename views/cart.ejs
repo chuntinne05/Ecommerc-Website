@@ -1,0 +1,126 @@
+<!-- cart.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ Hàng</title>
+    <!-- Thêm các link CSS nếu cần -->
+	<link rel="stylesheet" href="/css/cart.css" />
+	<link rel="stylesheet" href="/css/nav_bar.css" />
+</head>
+<body>
+    <nav style="background-color: rgb(130, 29, 29);">
+        <a href="/home" class="logo" style="color: aliceblue">chuntinne</a>
+        <div class="links">
+            <a href="/shop">Shop</a>
+            <a href="/the-food">The Food</a>
+            <a href="/about-us">About Us</a>
+            <a href="/rewards">Rewards</a>
+        </div>
+        <div class="user-cart">
+            <% if (userId) { %>
+                <a href="/cart"><i class="bx bx-cart-alt"></i>Cart</a>
+                <a href="/logout">Đăng xuất</a>
+            <% } else { %>
+                <a href="/login.html">Đăng nhập</a>     
+                <a href="/register.html">Đăng ký</a>
+            <% } %>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Review your bag.</h1>
+        <!-- <p class="sub-text">Free delivery.</p> -->
+    
+        <div class="info-banner">
+          <p>
+            <span class="badge">
+              <img src="apple-icon.png" alt="Apple Icon">
+            </span>
+            Shopping with more than 100.000 VNĐ will have free shipping.
+            <a href="#" class="learn-more">Learn more</a>
+          </p>
+        </div>
+        <div class="cart_items">
+            <% if (products.length === 0) { %>
+                <p>Giỏ hàng của bạn đang trống.</p>
+            <% } else { %>
+                <% products.forEach(product => { %>
+                    <div class="product" data-id="<%= product.id %>">
+                        <div class="product-image">
+                          <img 
+                          src="<%= product.image %>"
+                          alt="<%= product.name %>"
+                          class="product-image"
+                          >
+                        </div>
+                        <div class="product-details">
+                          <h2><%= product.name %></h2>
+                          <p class="installments">
+                            <%= product.price %> VNĐ
+                          </p>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="decrease-qty" data-id="<%= product.id %>">-</button>
+                            <input type="number" value="<%= product.quantity %>" min="1" class="quantity-input" data-id="<%= product.id %>">
+                            <button class="increase-qty" data-id="<%= product.id %>">+</button>
+                        </div>
+                        <div class="price">
+                          <p class="main-price"><%= product.price * product.quantity %> VNĐ</p>
+                          <p class="installments">
+                            Original price : 10.000 VND
+                          </p>
+                          <button class="remove-link delete-item delete-button" data-id="<%= product.id %>">Xoá</button>
+                        </div>
+                      </div>
+                      <hr class="separator" />
+                <% }) %>
+            <% } %>
+        </div>
+
+        <div class="checkout-section">
+            <div class="summary">
+                <table>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td><%= subtotal.toLocaleString() %> VNĐ</td>
+                    </tr>
+                    <tr>
+                        <td>Shipping</td>
+                        <td>FREE</td>
+                    </tr>
+                </table>
+                <div class="total">
+                    <span>Total</span>
+                    <div>
+                        <span class="total-price"><%= total.toLocaleString() %> VNĐ</span>
+                    </div>
+                </div>
+            </div>
+          
+            <h2>How would you like to check out?</h2>
+            <div class="payment-options">
+                <div class="option">
+                    <h3>Thanh toán qua Momo</h3>
+                    <p>$2,303.57/mo. at 0% APR°</p>
+                    <button class="primary-button">
+                        Order 
+                    </button>
+                    <!-- <p>
+                        <span class="small-text">
+                            $0.00 due today, which includes applicable one time payment items, shipping, and taxes.
+                        </span>
+                    </p> -->
+                </div>
+                <div class="option">
+                    <h3>Thanh toán khi nhận hàng</h3>
+                    <p>$27,643.00</p>
+                    <button class="primary-button">Check Out</button>
+                    <!-- <button class="secondary-button">Check Out with Apple Pay</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src = "/js/cart.js"></script>
+</body>
+</html> 

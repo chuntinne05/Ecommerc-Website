@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/css/style.css" />
+		<link rel="stylesheet" href="/css/nav_bar.css" />
+		<link rel="stylesheet" href="/css/login.css" />
+		<title>E-Commerce Website</title>
+	</head>
+
+	<body>
+		<div class="home_page" style="background-color: rgb(130, 29, 29)">
+			<nav>
+				<a href="/home" class="logo" style="color: aliceblue">chuntinne</a>
+				<div class="links">
+					<a href="/shop">Shop</a>
+					<a href="/the-food">The Food</a>
+					<a href="/about-us">About Us</a>
+					<a href="/rewards">Rewards</a>
+				</div>
+				<div class="user-cart">
+					<div class="user-in4" style="font-size: 20px">
+						<button class="circle">
+							<i class="bx bx-user"></i>
+						</button>
+					</div>
+					<div class="cart">
+						<button class="cart_button">
+							<i class="bx bx-cart-alt"></i>Cart
+						</button>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<h2>Đăng Nhập</h2>
+		<div class="wrapper">
+			<span class="icon-close">
+                <ion-icon name="close"></ion-icon>
+            </span>
+
+			<div class="form-box login">
+				<h2>Login</h2>
+				<form id="loginForm">
+					<div class="input-box">
+						<span class="icon">
+                            <ion-icon name="mail"></ion-icon>
+                        </span>
+						<input type="email" id="email" name="email" required /><br />
+						<label for="email">Email</label>	
+					</div>
+					<div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="lock-closed"></ion-icon>
+                        </span>
+                        <input type="password" id="password" name="password" required>
+                        <label for="password">Password</label>
+                    </div>
+					<div class="remember-forgot">
+                        <label><input type="checkbox">Remember me</label>
+                        <a href="#">Forgot password</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+					<div class="login-register">
+                        <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    </div>
+				</form>
+			</div>
+
+			<div class="form-box register">
+                <h2>Registration</h2>
+                <form id="registerForm">
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="person"></ion-icon>
+                        </span>
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="mail"></ion-icon>
+                        </span>
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="lock-closed"></ion-icon>
+                        </span>
+                        <input type="password" id="password" name="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">I agree to the terms & conditions</label>                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <div class="login-register">
+                        <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    </div>
+                </form>
+            </div>
+
+		</div>
+		<!-- <form id="loginForm">
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required /><br />
+
+			<label for="password">Mật khẩu:</label>
+			<input type="password" id="password" name="password" required /><br />
+
+			<button type="submit">Đăng Nhập</button>
+		</form> -->
+		<!-- <p>Chưa có tài khoản? <a href="register.html">Đăng ký</a></p> -->
+
+		<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>
