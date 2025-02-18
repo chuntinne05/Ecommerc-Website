@@ -37,13 +37,13 @@ app.use(
 );
 
 app.post("/register", (req, res) => {
+	console.log("Dữ liệu nhận được từ form:", req.body);
 	const { name, email, password } = req.body;
-
 	const checkEmailQuery = "SELECT * FROM users WHERE email = ?";
 	db.query(checkEmailQuery, [email], (err, results) => {
 		if (err) {
 			console.error(err);
-			return res.status(500).send("Lỗi máy chủ");
+			return res.status(500).send(`Lỗi máy chủ : ${err.message}`);
 		}
 		if (results.length > 0) {
 			return res.status(400).send("Email đã được sử dụng");
@@ -52,11 +52,11 @@ app.post("/register", (req, res) => {
 		const hashedPassword = bcrypt.hashSync(password, 10);
 
 		const insertUserQuery =
-			"INSERT INTO user_management.users (username, email, password) VALUES (?, ?, ?)";
+			"INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
 		db.query(insertUserQuery, [name, email, hashedPassword], (err, results) => {
 			if (err) {
 				console.error(err);
-				return res.status(500).send("Lỗi máy chủ");
+				return res.status(500).send(`Lỗi máy chủ : ${err.message}`);
 			}
 			return res.status(200).send("Đăng ký thành công");
 		});

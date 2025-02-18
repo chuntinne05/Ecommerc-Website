@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<!-- <link rel="stylesheet" href="/css/style.css" /> -->
+		<!-- <link rel="stylesheet" href="/css/nav_bar.css" /> -->
+		<link rel="stylesheet" href="/css/login.css" />
+		<title>E-Commerce Website</title>
+	</head>
+
+	<body>
+        <header>
+            <h2 class="logo">Logo</h2>
+            <nav class="navigation">
+                <a href="shop">Shop</a>
+                <a href="shop">Shop</a>
+                <a href="shop">Shop</a>
+                <a href="shop">Shop</a>
+                <button class="btnLogin-popup">Login</button>
+            </nav>
+        </header>
+		<div class="wrapper active-popup">
+			<span class="icon-close">
+                <ion-icon name="close"></ion-icon>
+            </span>
+
+			<div class="form-box login">
+				<h2>Login</h2>
+				<form id="loginForm">
+					<div class="input-box">
+						<span class="icon">
+                            <ion-icon name="mail"></ion-icon>
+                        </span>
+						<input type="email" id="email" name="email" required /><br />
+						<label for="email">Email</label>	
+					</div>
+					<div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="lock-closed"></ion-icon>
+                        </span>
+                        <input type="password" id="password" name="password" required>
+                        <label for="password">Password</label>
+                    </div>
+					<div class="remember-forgot">
+                        <label><input type="checkbox">Remember me</label>
+                        <a href="#">Forgot password</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+					<div class="login-register">
+                        <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    </div>
+				</form>
+			</div>
+
+			<div class="form-box register">
+                <h2>Registration</h2>
+                <form id="registerForm">
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="person"></ion-icon>
+                        </span>
+                        <input type="text" id="reg_name" name="name" required>
+                        <label for="reg_name">Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="mail"></ion-icon>
+                        </span>
+                        <input type="email" id="reg_email" name="email" required>
+                        <label for="reg_email">Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="lock-closed"></ion-icon>
+                        </span>
+                        <input type="password" id="reg_password" name="password" required>
+                        <label for="reg_password">Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">I agree to the terms & conditions</label>                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <div class="login-register">
+                        <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    </div>
+                </form>
+            </div>
+
+		</div>
+		<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>

@@ -1,27 +1,28 @@
 // const { response } = require("express");
+const wrapper = document.querySelector('.wrapper');
+const loginLink = document.querySelector('.login-link');
+const registerLink = document.querySelector('.register-link');
+const btnPopup = document.querySelector('.btnLogin-popup');
+const iconClose = document.querySelector('.icon-close');
+
+registerLink.addEventListener('click', () => {
+    wrapper.classList.add('active');
+});
+
+loginLink.addEventListener('click', () => {
+    wrapper.classList.remove('active');
+});
+
+btnPopup.addEventListener('click', () => {
+    wrapper.classList.add('active-popup');
+});
+
+iconClose.addEventListener('click', () => {
+    wrapper.classList.remove('active-popup');
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
-	// const wrapper = document.querySelector('.wrapper');
-	// const loginLink = document.querySelector('.login-link');
-	// const registerLink = document.querySelector('.register-link');
-	// const btnPopup = document.querySelector('.btnLogin-popup');
-	// const iconClose = document.querySelector('.icon-close');
-
-	// registerLink.addEventListener('click', () => {
-	// 	wrapper.classList.add('active');
-	// });
-
-	// loginLink.addEventListener('click', () => {
-	// 	wrapper.classList.remove('active');
-	// });
-
-	// btnPopup.addEventListener('click', () => {
-	// 	wrapper.classList.add('active-popup');
-	// });
-
-	// iconClose.addEventListener('click', () => {
-	// 	wrapper.classList.remove('active-popup');
-	// });
 	const registerForm = document.getElementById("registerForm");
 	const loginForm = document.getElementById("loginForm");
 
@@ -29,10 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		registerForm.addEventListener("submit", (e) => {
 			e.preventDefault();
 
-			const name = document.getElementById("name").value;
-			const email = document.getElementById("email").value;
-			const password = document.getElementById("password").value;
-
+			const name = document.getElementById("reg_name").value;
+			const email = document.getElementById("reg_email").value;
+			const password = document.getElementById("reg_password").value;
+			console.log("Dữ liệu gửi đi:", { name, email, password });
 			fetch("/register", {
 				method: "POST",
 				headers: {
