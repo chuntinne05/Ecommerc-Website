@@ -6,16 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="/css/shop.css" />
 		<link rel="stylesheet" href="/css/nav_bar.css" />
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Praise&family=Rubik+Microbe&family=UnifrakturMaguntia&display=swap');		
+		</style>
 		<title>Shop</title>
 	</head>
 	<body>
 		<nav>
-			<a href="/home" class="logo" style="color: aliceblue">chuntinne</a>
+			<!-- <a href="/home" class="logo" style="color: aliceblue">chuntinne</a> -->
+			<a href="/home" class="logo" style="color: aliceblue"><img src="/assets/Ảnh_màn_hình_2025-01-20_lúc_16.14.14-removebg-preview.png" alt=""></a>
 			<div class="links">
-				<a href="/shop">Shop</a>
-				<a href="/the-food">The Food</a>
-				<a href="/about-us">About Us</a>
-				<a href="/rewards">Rewards</a>
+				<a href="/shop" style="font-size: 18px;">Shop</a>
+				<a href="/the-food" style="font-size: 18px;">The Food</a>
+				<a href="/about_us.html" style="font-size: 18px;">About Us</a>
+				<a href="/rewards" style="font-size: 18px;">Rewards</a>
 			</div>
 			<div class="user-cart">
 				<div class="user-in4" style="font-size: 20px">
@@ -36,13 +40,13 @@
 		</nav>
 		<div class="header_shop">
 			<div class="shopFood">
-				<h1>Shop</h1>
-				<h2>FOOD+</h2>
+				<h1 style="font-family: 'Courier Prime', serif;">Shop</h1>
+				<h2 style="font-family: 'Courier Prime', serif;">FOOD+</h2>
 				<!-- <button class="filter_button">Filter</button> -->
 				<div class="category-button">
-					<label for="categoryFilter">Chọn Category:</label>
+					<label for="categoryFilter" style="font-family: 'Courier Prime', serif;" >Category : </label>
 					<select id="categoryFilter" onchange="filterCategory()">
-						<option value="">Tất cả</option>
+						<option value="" style="font-family: 'Courier Prime', serif;">Tất cả</option>
 						<% categories.forEach(category => { %>
 							<option value="<%= category.id %>" <% if (selectedCategory == category.id) { %>selected<% } %>><%= category.name %></option>
 						<% }) %>

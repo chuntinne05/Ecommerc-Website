@@ -8,13 +8,16 @@
 }
 
 body {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url('/assets/i_luv_yakult-removebg-preview.png') no-repeat;
-  background-size: cover;
-  background-position: center;
+  background: none;
+}
+.logo img {
+  width: 100px;
+  height: 100px; 
 }
 
 header {
@@ -67,12 +70,12 @@ header {
   width: 130px;
   height: 50px;
   background: transparent;
-  border: 2px solid #403535;
+  border: 2px solid #655a5a;
   outline: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 1.1em;
-  color: #ffffff;
+  color: #5a4949;
   font-weight: 500;
   margin-left: 40px;
   transition: .5s;
@@ -80,7 +83,7 @@ header {
 
 .navigation .btnLogin-popup:hover {
   background: #383232;
-  color: #6c2c2c;
+  color: #c1c1c1;
 }
 
 .wrapper {
@@ -111,6 +114,8 @@ header {
 .wrapper .form-box {
   width: 100%;
   padding: 40px;
+  /* position: absolute;  
+  transition: transform 0.3s ease-in-out; */
 }
 
 .wrapper .form-box.login {
@@ -121,26 +126,26 @@ header {
 
 .wrapper.active .form-box.login {
   transition: none;
-  transform: translateX(-400px);
+  transform: translateX(-400px) !important;
 }
 
 .wrapper .form-box.register {
   position: absolute;
   transition: none;
-  transform: translateX(400px);
+  transform: translateX(400px) !important;
 }
 
 .wrapper.active .form-box.register {
   /* display: none; */
   transition: transform .18s ease;
-  transform: translateX(0);
+  transform: translateX(0) !important;
 }
 
 
 .wrapper .icon-close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -1px;
+  right: -400px;
   width: 45px;
   height: 45px;
   background: #6c2c2c;

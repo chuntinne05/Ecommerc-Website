@@ -20,6 +20,12 @@ img {
 	object-fit: cover;
 }
 
+.logo img {
+	width: 100px;
+	height: 100px;
+	
+}
+
 body {
 	background-color: #e7cfcf;
 }
@@ -64,13 +70,12 @@ header {
 }
 
 .shopFood h1 {
-	font-size: 3rem;	
+	font-size: 4rem;	
 }
 
 .shopFood h2 {
-	font-size: 3rem;
+	font-size: 4rem;
     margin-left: 20px;
-    font-family: 'Courier Prime', sans-serif;
 }
 
 .category-button {

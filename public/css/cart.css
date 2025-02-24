@@ -3,7 +3,11 @@
   text-decoration: none;
   transition: color 0.3s;
 }
-
+.logo img {
+  width: 100px;
+  height: 100px;
+  
+}
 .links a:hover {
   color: #fcfcfc25; 
 }

@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     new DOMParser()
                         .parseFromString(html, 'text/html')
                         .querySelector('.container').innerHTML;
+                addEventListeners();
             });
         })
         .catch(error => {

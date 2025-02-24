@@ -8,16 +8,28 @@
 </head>
 <body>
     <header>
-        <h2 class="logo">Logo</h2>
+        <a href="/home" class="logo" style="color: aliceblue"><img src="/assets/Ảnh_màn_hình_2025-01-20_lúc_16.14.14-removebg-preview.png" alt=""></a>
         <nav class="navigation">
-            <a href="shop">Shop</a>
-            <a href="shop">Shop</a>
-            <a href="shop">Shop</a>
-            <a href="shop">Shop</a>
+            <a href="/shop" style="font-size: 18px;">Shop</a>
+            <a href="/the-food" style="font-size: 18px;">The Food</a>
+            <a href="/about-us.html" style="font-size: 18px;">About Us</a>
+            <a href="/rewards" style="font-size: 18px;">Rewards</a>
             <button class="btnLogin-popup">Login</button>
         </nav>
     </header>
-
+    <model-viewer 
+    id="background-3d"
+    src="/assets/juice_carton_shop.glb"
+    alt="3D Background"
+    auto-rotate
+    rotation-per-second="45deg"
+    camera-controls
+    disable-zoom
+    ar
+    environment-image="neutral"
+    field-of-view="30deg"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; object-fit: cover; transform: scale(1.2);">
+</model-viewer>
     <div class="wrapper">
         <span class="icon-close">
             <ion-icon name="close"></ion-icon>
@@ -45,7 +57,7 @@
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <div class="login-register">
-                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    <p>Don't have an account? <a href="#" class="register-link" id="registerLink">Register</a></p>
                 </div>
             </form>
         </div>
@@ -79,15 +91,15 @@
                 </div>
                 <button type="submit" class="btn">Register</button>
                 <div class="login-register">
-                    <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    <p>Already have an account? <a href="#" class="login-link" id="loginLink">Login</a></p>
                 </div>
             </form>
         </div>
     </div>
-
-
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="js/login.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
