@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <div class="container">
+        <div class="home_page" style="background-color: rgb(130, 29, 29)">
+            <nav>
+                <a href="/home" class="logo" style="color: aliceblue"><img src="/assets/Ảnh_màn_hình_2025-01-20_lúc_16.14.14-removebg-preview.png" alt=""></a>
+                <div class="links">
+                    <a href="/shop" style="font-size: 18px;">Shop</a>
+                    <a href="/the-food" style="font-size: 18px;">The Food</a>
+                    <a href="/about_us.html" style="font-size: 18px;">About Us</a>
+                </div>
+                <div class="user-cart">
+                    <div class="user-in4" style="font-size: 20px">
+                        <a href="/profile" class="circle">
+                            <i class="bx bx-user"></i>
+                        </a>
+                    </div>
+                    <% if (userId) { %>
+                        <a href="/cart"><i class="bx bx-cart-alt"></i>Cart</a>
+                        <a href="/logout">Đăng xuất</a>
+                    <% } else { %>
+                        <a href="/login.html">Đăng nhập</a>     
+                    <% } %>
+                </div>
+            </nav>
+        </div>
+
+        <div class="profile-container" style="background-color: rgb(130, 29, 29);">
+            <div class="sidebar">
+                <div class="user-header">
+                    <div class="user-icon">TT</div>
+                    <div>
+                        <div>Tin Trung</div>
+                        <div style="color: #999;">10:20:12 PM</div>
+                    </div>
+                </div>
+
+                <div class="menu">
+                    <div class="menu-item active" data-target="profile">
+                        👤 My Profile
+                    </div>
+                    <div class="menu-item" data-target="delivery">
+                        🚚 Delivery Address <span style="background-color: white; color: black; border-radius: 10px; padding: 2px 5px; margin-left: 5px;">4</span>
+                    </div>
+                    <div class="menu-item" data-target="orders">
+                        📦 My Orders <span style="background-color: white; color: black; border-radius: 10px; padding: 2px 5px; margin-left: 5px;">0</span>
+                    </div>
+                    <div class="menu-item" data-target="password">
+                        🔐 Change Password
+                    </div>
+                    <div class="menu-item" data-target="logout">
+                        🚪 Log Out
+                    </div>
+                </div>
+            </div>
+
+            <div class="container_2">
+                <div class="greeting">
+                    <h2>Good evening, Tin</h2>
+                </div>
+                <div class="profile-content">
+                    <div id="profile" class="content-section active">
+                        <form action="/update-profile" method="POST">
+                            <label for="first_name">First Name:</label>
+                            <input type="text" id="first_name" name="first_name" value="<%= user.first_name %>" required>
+
+                            <label for="last_name">Last Name:</label>
+                            <input type="text" id="last_name" name="last_name" value="<%= user.last_name %>" required>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" value="<%= user.email %>" required>
+
+                            <label for="phone">Phone:</label>
+                            <input type="text" id="phone" name="phone" value="<%= user.phone %>">
+
+                            <label for="gender">Gender:</label>
+                            <select id="gender" name="gender">
+                                <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
+                                <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
+                                <option value="other" <%= user.gender === 'other' ? 'selected' : '' %>>Other</option>
+                            </select>
+
+                            <button type="submit">Update Profile</button>
+                        </form>
+
+                        <!-- Form đổi mật khẩu -->
+                        <form action="/change-password" method="POST">
+                            <label for="current_password">Current Password:</label>
+                            <input type="password" id="current_password" name="current_password" required>
+
+                            <label for="new_password">New Password:</label>
+                            <input type="password" id="new_password" name="new_password" required>
+
+                            <button type="submit">Change Password</button>
+                        </form>
+                    </div>
+    
+                    <div id="delivery" class="content-section">
+                        Delivery Address Content
+                    </div>
+                    <div id="orders" class="content-section">
+                        My Orders Content
+                    </div>
+                    <div id="password" class="content-section">
+                        Change Password Content
+                    </div>
+                    <div id="logout" class="content-section">
+                        Log Out Confirmation
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active from all menu items
+                document.querySelectorAll('.menu-item').forEach(el => {
+                    el.classList.remove('active');
+                });
+
+                // Add active to clicked item
+                this.classList.add('active');
+
+                // Hide all content sections
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // Show selected content section
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

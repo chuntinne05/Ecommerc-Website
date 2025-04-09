@@ -3,8 +3,31 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	/* font-family: 'Courier Prime', sans-serif; */
+	font-family: 'Courier Prime', sans-serif;
 }
+
+.home_page nav {
+	padding-left: 80px;
+	padding-right: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.home_page nav a {
+    text-decoration: none;
+    color: #ceacac;
+}
+  
+.home_page nav .user-cart {
+	display: flex;
+	gap: 1rem;
+}
+  
+.home_page nav .links a:not(:last-child) {
+	margin-right: 3rem;
+}
+
 .logo img {
 	width: 100px;
 	height: 100px;

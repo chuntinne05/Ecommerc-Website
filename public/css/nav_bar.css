@@ -6,64 +6,21 @@
     font-family: 'Courier Prime', sans-serif;
 }
 
-nav{
-    padding: 0 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 80px;
+.home_page nav {
+  padding-left: 80px;
+  padding-right: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-nav a.logo{
-    font-size: 33px;
-    color: #353638;
-    font-weight: 600;
+.home_page nav .user-cart {
+  display: flex;
+  gap: 1rem;
 }
 
-.user-cart {
-    right: 80px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-nav .links a:not(:last-child){
-    margin-right: 80px;
-}
-
-nav .login button{
-    padding: 8px 14px;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-}
-
-nav .login button.signup{
-    background-color: #000;
-    color: #fff;
-    border-radius: 4px;
-    margin-right: 14px;
-}
-
-.user-in4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.circle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px; /* Đặt kích thước chiều rộng */
-    height: 30px; /* Đặt kích thước chiều cao */
-    border-radius: 50%; /* Tạo hình tròn */
-    background-color: antiquewhite; /* Màu nền */
-}
-
-.circle i {
-    font-size: 20px; /* Kích thước icon */
-    color: #000; /* Màu sắc của icon */
+.home_page nav .links a:not(:last-child) {
+  margin-right: 3rem;
 }
 
 @media screen and (max-width: 1024px) {
@@ -123,4 +80,3 @@ nav .login button.signup{
       gap: 10px;
     }
   }
-  

@@ -3,13 +3,25 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	/* font-family: 'Courier Prime', sans-serif; */
+	font-family: 'Courier Prime', sans-serif;
+}
+.home_page nav {
+	padding-left: 80px;
+	padding-right: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+  
+.home_page nav .user-cart {
+	display: flex;
+	gap: 1rem;
+}
+  
+.home_page nav .links a:not(:last-child) {
+	margin-right: 3rem;
 }
 
-/* @font-face {
-	font-family: "Courier Prime";
-	src: url();
-} */
 
 a {
 	text-decoration: none;
@@ -95,8 +107,8 @@ header {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 1.5rem;
 	padding: 2rem 80px;
 }
 
@@ -109,7 +121,7 @@ header {
 
 .product-image {
     width: 100%;
-    height: 24rem;
+    height: 20rem;
     border-radius: 4px;
 }
 
@@ -142,8 +154,19 @@ header {
 .add-to-cart:hover {
     background: #5a4d4d;
 }
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
 
 @media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
     }

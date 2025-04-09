@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const mysql = require("mysql2");
 const path = require("path");
+const req = require("express/lib/request");
 
 const app = express();
 const port = 3000;
@@ -24,7 +25,8 @@ db.connect((err) => {
 		console.log("Kết nối user_account thành công");
 	}
 });
-
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -85,6 +87,8 @@ app.post("/login", (req, res) => {
 
 		// Lưu thông tin người dùng vào session
 		req.session.userId = user.id;
+		req.session.user = { id: user.id, name: user.username, email: user.email }; // Thêm thông tin user
+		console.log("Đã lưu session:", req.session);
 		return res.status(200).send("Đăng nhập thành công");
 	});
 });
@@ -98,14 +102,8 @@ function isAuthenticated(req, res, next) {
 	}
 }
 
-// // Trang chủ
-// app.get("/home", isAuthenticated, (req, res) => {
-// 	res.sendFile(__dirname + "/public/home.html");
-// });
-
 app.get("/home", (req, res) => {
 	const userId = req.session.userId;
-	// Giả sử bạn muốn hiển thị sản phẩm có ID 1, 3, và 5
 	const selectedIds = [7, 8, 9];
 	const placeholders = selectedIds.map(() => "?").join(", ");
 	const query = `SELECT * FROM products WHERE id IN (${placeholders})`;
@@ -133,9 +131,6 @@ app.get("/logout", (req, res) => {
 		res.redirect("/login.html");
 	});
 });
-
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 app.get("/shop", (req, res) => {
 	const userId = req.session.userId;
@@ -326,6 +321,98 @@ app.post("/delete-from-cart", isAuthenticated, (req, res) => {
 	});
 });
 
+app.get("/user_profile", (req, res) => {
+	const userId = req.session.userId;
+	if (!userId) {
+		res.redirect("/login.html")
+	}
+	const query = "SELECT * FROM users WHERE id = ?";
+    const addressQuery = "SELECT * FROM delivery_addresses WHERE user_id = ?";
+	db.query(query, [userId], (err, results) => {
+		if (err) {
+			console.error(err);
+			return res.status(500).send("Lỗi máy chủ");
+		}
+		if (results.length === 0) {
+			return res.status(404).send("User not find in db");
+		}
+        db.query(addressQuery, [userId], (err, addressResults) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).send("Server Error");
+            }
+            const address = addressResults.length ? addressResults[0] : null;
+            res.render("user_profile", { user: results[0], userId: userId, address: address });
+        });
+	});
+});
+
+app.post("/user_profile", (req, res) => {
+	const userId = req.session.userId;
+	const { first_name, last_name, gender, email, phone } = req.body;
+	if (!userId) {
+		return res.redirect("/login.html");
+	}
+	const updateQuery = "UPDATE users SET first_name = ?, last_name = ?, gender = ?, email = ?, phone = ? WHERE id = ?";
+	db.query(updateQuery, [first_name, last_name, gender, email, phone, userId], (err, results) => {
+		if (err) {
+			console.error(err);
+			return res.status(500).send("Error");
+		}
+		req.session.user.email = email;
+		req.session.user.first_name = first_name;
+		req.session.user.last_name = last_name;
+		req.session.user.gender = gender;
+		req.session.user.phone = phone;
+
+		res.json({ success: true, message: "Email has been changed successfully" });
+	});
+});
+
+app.post("/update_delivery_address", (req, res) => {
+    const userId = req.session.userId;
+    if (!userId) {
+        return res.redirect("/login.html");
+    }
+    const { house_number, street, receiver_name, receiver_phone, address_type, notes } = req.body;
+    // Kiểm tra xem người dùng đã có địa chỉ chưa
+    const checkQuery = "SELECT * FROM delivery_addresses WHERE user_id = ?";
+    db.query(checkQuery, [userId], (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ success: false, message: "Server Error" });
+        }
+        if (results.length > 0) {
+            // Cập nhật địa chỉ
+            const updateQuery = `
+                UPDATE delivery_addresses 
+                SET house_number = ?, street = ?, receiver_name = ?, receiver_phone = ?, address_type = ?, notes = ? 
+                WHERE user_id = ?
+            `;
+            db.query(updateQuery, [house_number, street, receiver_name, receiver_phone, address_type, notes, userId], (err, updateResults) => {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).json({ success: false, message: "Server Error" });
+                }
+                res.json({ success: true, message: "Delivery address updated successfully" });
+            });
+        } else {
+            // Chèn địa chỉ mới
+            const insertQuery = `
+                INSERT INTO delivery_addresses 
+                (user_id, house_number, street, receiver_name, receiver_phone, address_type, notes)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            `;
+            db.query(insertQuery, [userId, house_number, street, receiver_name, receiver_phone, address_type, notes], (err, insertResults) => {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).json({ success: false, message: "Server Error" });
+                }
+                res.json({ success: true, message: "Delivery address added successfully" });
+            });
+        }
+    });
+});
 app.listen(port, () => {
 	console.log(`Server đang chạy tại http://localhost:${port}`);
 });
